@@ -1,0 +1,51 @@
+% All-to-all shortest path problem (without uniq)
+% Original version by Hiroki Iwasawa, 2008.
+% Modified by Kazunori Ueda, 2011.
+{
+cost(ikebukuro,ikebukuro,0,no), cost(ikebukuro,nishi,100,null),
+cost(ikebukuro,school,100,null), cost(ikebukuro,shibuya,100,null),
+cost(ikebukuro,waseda,100,null), 
+cost(ikebukuro,sanchome,100,null), 
+ cost(ikebukuro,shinjuku,100,null),
+cost(ikebukuro,baba,100,null), cost(ikebukuro,nakano,100,null),
+e(ikebukuro,nishi,5), e(baba,shinjuku,4), e(shinjuku,baba,4), 
+e(shinjuku,nakano,9), e(school,waseda,25), e(nishi,school,4), 
+e(nishi,ikebukuro,5), e(shibuya,shinjuku,7), e(nishi,sanchome,4), 
+e(shibuya,sanchome,7), e(school,nishi,4), e(shinjuku,shibuya,7), 
+e(shinjuku,sanchome,3), e(waseda,school,25), e(sanchome,shibuya,7), 
+e(sanchome,nishi,4), e(baba,school,15), e(school,baba,15), 
+e(baba,waseda,2), e(waseda,baba,2), e(baba,ikebukuro,4), 
+e(ikebukuro,baba,4), e(sanchome,shinjuku,3), e(nakano,shinjuku,9), 
+e(nakano,baba,6), e(baba,nakano,6).
+e($a0,$b0,$c0), cost($z0,$a,$c1,X), cost($z,$b,$c2,$a1) :- 
+  $a0==$a, $b0==$b, $z0==$z, $c=$c0+$c1, $c<$c2,unary($a1)|
+  e($a0,$b0,$c0), cost($z0,$a,$c1,X), cost($z,$b,$c,$a).
+}.
+{$p,@q}/:-$p.
+e_increase(ikebukuro,baba,100),l=[].
+
+e_increase($a0,$b0,$c0),e($a1,$b1,$c1),e($a2,$b2,$c2):-
+uniq,$a0==$a1,$a1==$b2,$b0==$b1,$b1==$a2,int($c0),int($c1),int($c2)|
+e_increase($a0,$b0,$c0),e($a1,$b1,$c0),e($a2,$b2,$c0).
+
+e_increase($a,$b,C),cost(A0,$b0,C0,$d0),l=T:-
+uniq,$b0==$b,$a==$d0|
+e_increase($a,$b,C),cost_change(A0,$b0,C0,$d0),l=[$b0|T].
+
+e_increase($b,$a,C),cost(A0,$b0,C0,$d0),l=T:-
+uniq,$b0==$b,$a==$d0|
+e_increase($a,$b,C),cost_change(A0,$b0,C0,$d0),l=[$b0|T].
+
+L=[$a|T],cost(A,$b,C,$d0):-
+$a==$d0,unary($b)|
+L=[$a,$b|T],cost_change(A,$b,C,$d0).
+
+l($a):-ground($a)|.
+
+cost_change(A,B,$c,$d):-
+int($c),unary($d)|
+cost(A,B,100,null).
+
+e($a0,$b0,$c0), cost($z0,$a,$c1,X), cost($z,$b,$c2,$a1) :- 
+  $a0==$a, $b0==$b, $z0==$z, $c=$c0+$c1, $c<$c2,unary($a1)|
+  e($a0,$b0,$c0), cost($z0,$a,$c1,X), cost($z,$b,$c,$a).

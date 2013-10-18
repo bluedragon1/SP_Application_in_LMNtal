@@ -1,0 +1,79 @@
+% All-to-all shortest path problem (without uniq)
+% Original version by Hiroki Iwasawa, 2008.
+% Modified by Kazunori Ueda, 2011.
+
+cost(ikebukuro,ikebukuro,0,no), cost(ikebukuro,nishi,100,null),
+cost(nishi,ikebukuro,100,null),
+cost(nishi,nishi,0,no), cost(school,school,0,no),
+cost(school,ikebukuro,100,null),
+cost(school,waseda,100,null), cost(school,nishi,100,null),
+cost(ikebukuro,school,100,null),
+cost(ikebukuro,waseda,100,null), cost(waseda,ikebukuro,100,null),
+cost(waseda,waseda,0,no),
+cost(waseda,nishi,100,null), cost(waseda,school,100,null),
+cost(nishi,waseda,100,null),
+cost(nishi,school,100,null), cost(sanchome,sanchome,0,no),
+cost(sanchome,ikebukuro,100,null), 
+cost(sanchome,nishi,100,null), cost(sanchome,waseda,100,null),
+cost(sanchome,school,100,null), 
+cost(ikebukuro,sanchome,100,null), cost(school,sanchome,100,null),
+cost(nishi,sanchome,100,null), 
+cost(waseda,sanchome,100,null), cost(shibuya,shibuya,0,no),
+cost(shibuya,ikebukuro,100,null), 
+cost(shibuya,sanchome,100,null), cost(shibuya,school,100,null),
+cost(shibuya,nishi,100,null), 
+cost(shibuya,waseda,100,null), cost(ikebukuro,shibuya,100,null),
+cost(waseda,shibuya,100,null), 
+cost(sanchome,shibuya,100,null), cost(school,shibuya,100,null),
+cost(nishi,shibuya,100,null), 
+cost(shinjuku,shinjuku,0,no), cost(shinjuku,ikebukuro,100,null),
+cost(shinjuku,shibuya,100,null), 
+cost(shinjuku,waseda,100,null), cost(shinjuku,sanchome,100,null),
+cost(shinjuku,school,100,null), 
+cost(shinjuku,nishi,100,null), cost(ikebukuro,shinjuku,100,null),
+cost(nishi,shinjuku,100,null), 
+cost(shibuya,shinjuku,100,null), cost(waseda,shinjuku,100,null),
+cost(sanchome,shinjuku,100,null), 
+cost(school,shinjuku,100,null), cost(baba,baba,0,no),
+cost(baba,ikebukuro,100,null), 
+cost(baba,shinjuku,100,null), cost(baba,nishi,100,null), cost(baba,shibuya,100,null), 
+cost(baba,waseda,100,null), cost(baba,sanchome,100,null), cost(baba,school,100,null), 
+cost(ikebukuro,baba,100,null), cost(school,baba,100,null),
+cost(shinjuku,baba,100,null), 
+cost(nishi,baba,100,null), cost(shibuya,baba,100,null), cost(waseda,baba,100,null), 
+cost(sanchome,baba,100,null), cost(nakano,nakano,0,no),
+cost(nakano,ikebukuro,100,null), 
+cost(nakano,shinjuku,100,null), cost(nakano,school,100,null),
+cost(nakano,nishi,100,null), 
+cost(nakano,shibuya,100,null), cost(nakano,waseda,100,null),
+cost(nakano,sanchome,100,null), 
+cost(nakano,baba,100,null), cost(ikebukuro,nakano,100,null),
+cost(baba,nakano,100,null), 
+cost(shinjuku,nakano,100,null), cost(school,nakano,100,null),
+cost(nishi,nakano,100,null), 
+cost(shibuya,nakano,100,null), cost(waseda,nakano,100,null),
+cost(sanchome,nakano,100,null), 
+e(ikebukuro,nishi,5), e(baba,shinjuku,4), e(shinjuku,baba,4), 
+e(shinjuku,nakano,9), e(school,waseda,25), e(nishi,school,4), 
+e(nishi,ikebukuro,5), e(shibuya,shinjuku,7), e(nishi,sanchome,4), 
+e(shibuya,sanchome,7), e(school,nishi,4), e(shinjuku,shibuya,7), 
+e(shinjuku,sanchome,3), e(waseda,school,25), e(sanchome,shibuya,7), 
+e(sanchome,nishi,4), e(baba,school,15), e(school,baba,15), 
+e(baba,waseda,2), e(waseda,baba,2), e(baba,ikebukuro,4), 
+e(ikebukuro,baba,4), e(sanchome,shinjuku,3), e(nakano,shinjuku,9), 
+e(nakano,baba,6), e(baba,nakano,6).
+keiro(ikebukuro,shibuya),kai=[].
+
+e($a0,$b0,$c0), cost($z0,$a,$c1,X), cost($z,$b,$c2,$a1) :- 
+  $a0==$a, $b0==$b, $z0==$z, $c=$c0+$c1, $c<$c2,unary($a1)|
+  e($a0,$b0,$c0), cost($z0,$a,$c1,X), cost($z,$b,$c,$a).
+
+keiro($a,$b),cost($a1,$b1,X,$d),kai=T:-
+$a=$a1,$b=$b1,unary($d)|
+keiro($a,$d),cost($a1,$b1,X,$d),kai=[$b1|T].
+
+
+e($a,$b,$c):-unary($a),unary($b),unary($c)|.
+cost($a,$b,$c,$d):-unary($a),unary($b),unary($c),unary($d)|.
+
+keiro($a,$b):-unary($a),unary($b)|.
