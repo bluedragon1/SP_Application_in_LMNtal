@@ -1,6 +1,11 @@
 {
 	module(makedata).
 
+	makedata.cost($a,$b,$c):-
+	$a=<$c,$c=<$b|
+	cost($c,integer.set($a,$b),10000,null).
+
+
 	makedata.cost($a,$b):-
 	int($a),int($b)|
 	cost(integer.set($a,$b),integer.set($a,$b),10000,null).

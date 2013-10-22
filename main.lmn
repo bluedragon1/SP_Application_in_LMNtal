@@ -1,0 +1,6 @@
+main{
+	init.
+}.
+
+main{init.}
+:-main{shortestio.e_input.}.

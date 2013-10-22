@@ -1,0 +1,12 @@
+1@@cost_a($z0,$a,$c1), e($a0,$b0,$c0), cost($z,$b,$c2) :- 
+  $a0==$a, $b0==$b, $z0==$z, $c=$c0+$c1, $c<$c2 |
+  cost_a($z0,$a,$c1), e($a0,$b0,$c0), cost($z,$b,$c).
+  
+2@@cost_a(Z,B,C):-cost_f(Z,B,C).
+
+3@@cost1(Z1,B1,$c1),cost(Z,B,$c):-$c<$c1|
+cost(Z1,B1,$c1),cost1(Z,B,$c).
+
+4@@cost1(Z,B,C):-cost_a(Z,B,C).
+
+5@@cost(Z,B,C):-cost1(Z,B,C).
