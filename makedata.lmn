@@ -1,0 +1,10 @@
+{
+	module(makedata).
+
+	makedata.cost($a,$b):-
+	int($a),int($b)|
+	cost(integer.set($a,$b),integer.set($a,$b),10000,null).
+	cost($a,$b,$c,D):-$a==$b,$c\=0|cost($a,$b,0,D).
+	
+	
+}
