@@ -1,6 +1,18 @@
-main{
+init{
 	init.
 }.
+main{
+	e($a,$b,$c):-int($a),int($b),$c==9|.
+}.
+out{
+	dump.e.
+}
+.
+init{init.}
+:-init{shortestio.e_input.}.
 
-main{init.}
-:-main{shortestio.e_input.}.
+init{$p,@q}/,main{$p1,@q1}/:-
+uniq|init{@q},main{$p,$p1,@q1}.
+
+main{$p,@q}/,out{$p1,@q1}/:-
+uniq|main{@q},out{$p,$p1,@q1}.

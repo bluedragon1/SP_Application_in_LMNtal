@@ -1,0 +1,13 @@
+{
+	module(dump).
+	dump.e,e(A,B,C):-edump(io.stdout),e(A,B,C).
+	edump(O),e($a,$b,$c):-
+	unary($a),unary($b),unary($c)|
+	io.print(O,str.from($a),O1),
+	io.print(O1," ",O11),
+	io.print(O11,str.from($b),O2),
+	io.print(O2," ",O22),
+	io.print_line(O22,str.from($c),O3),
+	edump(O3).
+	edump(O):-io.free_port(O).
+}
