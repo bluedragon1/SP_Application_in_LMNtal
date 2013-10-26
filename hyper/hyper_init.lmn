@@ -1,0 +1,6 @@
+{
+	module(shortesthyper).
+	shortesthyper.init:-
+	s_h_mode.
+	s_h_mode\e($a,B,C),e($a1,!B1,C,!D)//work in progress
+}.

@@ -1,0 +1,18 @@
+init{
+	shortestio.e_input_string.
+	l(H):-shortestio.make_string(l(H)).	
+}.
+main{
+	
+}.
+out{
+	//dump.e.
+}
+.
+
+init_main @@
+init{$p,@q}/,main{$p1,@q1}/:-
+uniq|init{@q},main{$p,$p1,@q1}.
+
+main{$p,@q}/,out{$p1,@q1}/:-
+uniq|main{@q},out{$p,$p1,@q1}.

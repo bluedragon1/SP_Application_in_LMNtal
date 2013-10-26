@@ -1,0 +1,6 @@
+{
+	module(shortesthyper).
+	shortesthyper.init:-
+	s_h_mode.
+	s_h_mode\
+}.
