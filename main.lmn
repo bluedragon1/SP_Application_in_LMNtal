@@ -1,16 +1,17 @@
 init{
-	init.
+	//shortestio.e_input_string.
+	shortestio.make_s.
 }.
 main{
-	e($a,$b,$c):-int($a),int($b),$c==9|.
+	//e($a,$b,$c):-int($a),int($c),$b>10|.
+	//e($a,$b,$c):-int($b),int($c),$a>10|.
 }.
 out{
-	dump.e.
+	dump.cost.
 }
 .
-init{init.}
-:-init{shortestio.e_input.}.
 
+init_main @@
 init{$p,@q}/,main{$p1,@q1}/:-
 uniq|init{@q},main{$p,$p1,@q1}.
 

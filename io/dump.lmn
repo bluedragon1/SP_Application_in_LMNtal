@@ -1,6 +1,7 @@
 {
 	module(dump).
-	dump.e,e(A,B,C):-edump(io.stdout),e(A,B,C).
+	//dump.e,e(A,B,C):-edump(io.stdout),e(A,B,C).
+	e(A,B,C)\dump.e:-edump(io.stdout).
 	edump(O),e($a,$b,$c):-
 	unary($a),unary($b),unary($c)|
 	io.print(O,str.from($a),O1),
@@ -10,4 +11,18 @@
 	io.print_line(O22,str.from($c),O3),
 	edump(O3).
 	edump(O):-io.free_port(O).
+
+	cost(A,B,C,D)\dump.cost:-costdump(io.stdout).
+	costdump(O),cost($a,$b,$c,$d):-
+	unary($a),unary($b),unary($c),unary($d)|
+	io.print(O,str.from($a),O1),
+	io.print(O1," ",O11),
+	io.print(O11,str.from($b),O2),
+	io.print(O2," ",O22),
+	io.print(O22,str.from($c),O3),
+	io.print(O3," ",O33),
+	io.print_line(O33,str.from($d),O4),
+	costdump(O4).
+	costdump(O):-io.free_port(O).
+	
 }

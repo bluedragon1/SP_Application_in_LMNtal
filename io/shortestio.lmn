@@ -16,17 +16,15 @@ makedata.cost(1,integer.of_str(S),integer.of_str(S1)),
 io.read_token(I,I1,S1),
 io.free_port(I1).
 
-/* same above
-shortestio.singlesource:-
-io.read_token(io.stdin,I,S),
-cost(integer.of_str(S1),integer.set(1,integer.of_str(S))),
-io.read_token(I,I1,S1),
-io.read_token(I1,I2,S2),
-shortestio_a(integer.of_str(S2),I2).
+/* make cost (one to all) unfinished  */
+// 1 to $1, start node is $2
+shortestio.make_string=[$a|H]:-unary($a),uniq|
+cost($a,$a,0),l=H,cost($a).
+cost($a),l=[X|H]:-unary($a)|
+cost($a),cost($a,X,0),l=H.
 
-cost($a,$b):-$a==$b|cost($a,$b,0).
-cost($a,$b):-int($a),int($b)|cost($a,$b,1000).
-*/
+
+
 //shortestio_a(0,I)=>free I
 shortestio_a($x,I):-$x=:=0|io.free_port(I).
 
@@ -40,5 +38,20 @@ shortestio_a(integer.of_str(S3),I3).
 shortestio.e_input:-
 io.read_token(io.stdin,I,S),
 shortestio_a(integer.of_str(S),I).
+
+////String input
+//shortestio_string(0,I)=>free I
+shortestio_string($x,I):-$x="null"|io.free_port(I).
+
+shortestio_string(X,I):-
+io.read_token(I,I1,S1),
+io.read_token(I1,I2,S2),
+io.read_token(I2,I3,S3),
+e(X,S1,integer.of_str(S2)),
+shortestio_string(S3,I3).
+
+shortestio.e_input_string:-
+io.read_token(io.stdin,I,S),
+shortestio_string(S,I).
 
 }.
