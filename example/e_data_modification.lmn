@@ -1,0 +1,18 @@
+init{
+	shortestio.e_input.
+}.
+main{
+	e($a,$b,$c):-$a>50,unary($b),int($c)|.
+	e($a,$b,$c):-$b>50,unary($a),int($c)|.
+}.
+out{
+	dump.e.
+}
+.
+
+init_main @@
+init{$p,@q}/,main{$p1,@q1}/:-
+uniq|init{@q},main{$p,$p1,@q1}.
+
+main{$p,@q}/,out{$p1,@q1}/:-
+uniq|main{@q},out{$p,$p1,@q1}.
