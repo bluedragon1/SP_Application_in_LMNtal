@@ -16,12 +16,14 @@ makedata.cost(1,integer.of_str(S),integer.of_str(S1)),
 io.read_token(I,I1,S1),
 io.free_port(I1).
 
+
 /* make cost (one to all) unfinished  */
 // 1 to $1, start node is $2
 shortestio.make_string=[$a|H]:-unary($a),uniq|
-cost($a,$a,0),l=H,cost($a).
+cost($a,$a,0,no),l=H,cost($a).
 cost($a),l=[X|H]:-unary($a)|
-cost($a),cost($a,X,0),l=H.
+cost($a),cost($a,X,10000,null),l=H.
+cost($a):-unary($a)|.
 
 
 

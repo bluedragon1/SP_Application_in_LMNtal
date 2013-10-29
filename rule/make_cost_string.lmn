@@ -1,0 +1,7 @@
+main{$p,@q}/:-uniq|
+main{$p},
+make_cost_string{$p,l=[].
+l=[],e(X,Y,$x):-uniq,int($x)|l=[X,Y].
+L=[$l|H],e($a,Y,$x):-$l==$a,int($x)|L=[$l,Y|H].
+L=[$l|H],L1=[$l1|H1]:-$l==$l1|L=[$l|H],L1=H1.
+}.

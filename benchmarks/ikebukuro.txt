@@ -1,0 +1,27 @@
+ikebukuro nishi 5
+baba shinjuku 4
+shinjuku baba 4
+shinjuku nakano 9
+school waseda 25
+nishi school 4
+nishi ikebukuro 5
+shibuya shinjuku 7
+nishi sanchome 4
+shibuya sanchome 7
+school nishi 4
+shinjuku shibuya 7
+shinjuku sanchome 3
+waseda school 25
+sanchome shibuya 7
+sanchome nishi 4
+baba school 15
+school baba 15
+baba waseda 2
+waseda baba 2
+baba ikebukuro 4
+ikebukuro baba 4
+sanchome shinjuku 3
+nakano shinjuku 9
+nakano baba 6
+baba nakano 6
+null

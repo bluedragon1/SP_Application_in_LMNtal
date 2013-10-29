@@ -1,19 +1,19 @@
-init{
+main{
 	//shortestio.e_input_string.
 	shortestio.make_s.
 }.
-main{
+rule{
 	//e($a,$b,$c):-int($a),int($c),$b>10|.
 	//e($a,$b,$c):-int($b),int($c),$a>10|.
 }.
 out{
-	dump.cost.
+	cost(A,B,C,D)\:-dump.cost.
 }
 .
 
 init_main @@
-init{$p,@q}/,main{$p1,@q1}/:-
-uniq|init{@q},main{$p,$p1,@q1}.
+main{$p,@q}/,rule{$p1,@q1}/:-
+uniq|main{$p,@q1},rule{$p1,@q1}.
 
 main{$p,@q}/,out{$p1,@q1}/:-
-uniq|main{@q},out{$p,$p1,@q1}.
+uniq|main{$p,@q1},out{$p1,@q1}.
