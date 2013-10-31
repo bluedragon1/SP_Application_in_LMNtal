@@ -1,7 +1,0 @@
-{
-	module(printio).
-
-	printio.print(X):-
-	print($x,O0,O):-
-	ground($x)|io.print_line(O0,str.from($x),O).
-}
