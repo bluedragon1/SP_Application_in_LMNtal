@@ -28,7 +28,9 @@ cost($a):-unary($a)|.
 
 
 //shortestio_a(0,I)=>free I
+shortestio_a($x,I):-$x=:=-1|io.free_port(I).
 shortestio_a($x,I):-$x=:=0|io.free_port(I).
+shortestio_a(X,I),eof(Y),$x[X,Y]:-ground($x)|io.free_port(I).
 
 shortestio_a(X,I):-
 io.read_token(I,I1,S1),
@@ -43,6 +45,7 @@ shortestio_a(integer.of_str(S),I).
 
 ////String input
 //shortestio_string(0,I)=>free I
+shortestio_string(eof,I):-io.free_port(I).
 shortestio_string($x,I):-$x="null"|io.free_port(I).
 
 shortestio_string(X,I):-

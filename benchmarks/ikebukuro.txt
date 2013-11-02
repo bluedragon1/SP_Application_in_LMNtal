@@ -24,4 +24,3 @@ sanchome shinjuku 3
 nakano shinjuku 9
 nakano baba 6
 baba nakano 6
-null
