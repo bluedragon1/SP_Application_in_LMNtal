@@ -48,6 +48,14 @@ shortestio_a(integer.of_str(S),I).
 shortestio_string(eof,I):-io.free_port(I).
 shortestio_string($x,I):-$x="null"|io.free_port(I).
 
+shortestio_string($x,I):-unary($x),uniq|
+io.read_token(I,I1,S1),
+io.read_token(I1,I2,S2),
+io.read_token(I2,I3,S3),
+e($x,S1,integer.of_str(S2)),
+shortestio_string(S3,I3),
+source($x).
+
 shortestio_string(X,I):-
 io.read_token(I,I1,S1),
 io.read_token(I1,I2,S2),
