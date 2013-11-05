@@ -1,0 +1,32 @@
+main{
+	l=[].
+	:-uniq|
+	field(integer.of_str(A),integer.of_str(B)),
+	io.read_token(io.stdin,I,A),
+	io.read_token(I,io.free_port,B).
+}.
+rule{
+	
+	field($a,B),l(T):-uniq,$a0=$a-1|field($a0,B),l=[$a|T].
+
+	field($a,$b),L=[$x|T]:-$a>0,$a0=$a-1,$b0=$b-1,int($x)|
+	field($a0,$b0),L=[$a,$x|T],e($a,$x,direct,integer.rnd(100)+1).
+
+	field(A,$b),L=[$x|T],L1=[$x1|T1]:-
+	$x\=$x1,$b0=$b-1,$b>0|
+	field(A,$b0),L=[$x|T],L1=[$x1|T1],
+	e($x,$x1,direct,integer.rnd(100)+1).
+
+	e($x,$x1,direct,$c):-int($x),int($x1),int($c)|
+	e($x,$x1,$c),e($x1,$x,$c).
+}.
+out{
+	e(A,B,C)\:-dump.e.
+}
+.
+main{$p,@q}/,rule{$p1,@q1}/:-
+uniq|main{$p,@q1},rule{$p1,@q1}.
+
+
+main{$p,@q}/,out{$p1,@q1}/:-
+uniq|main{$p,@q1},out{$p1,@q1}.
