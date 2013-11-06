@@ -24,5 +24,6 @@
 	io.print_line(O33,str.from($d),O4),
 	costdump(O4).
 	costdump(O):-io.free_port(O).
-	
+
+	dump.time(X):-io.print_line(io.stdout,str.from(X),io.free_port)	
 }
