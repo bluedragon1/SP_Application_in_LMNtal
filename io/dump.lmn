@@ -29,7 +29,7 @@
 
 	e(A,B,C)\dump.graphviz:-
 	io.print_line(io.stdout,"digraph sample{",O),
-	io.print_line(O,"  graph [size = \"1.5, 2.5\"];",O1),
+	io.print_line(O,"  graph [size = \"10, 10\"];",O1),
 	graphvizdump(O1).
 	graphvizdump(O),e($a,$b,$c):-unary($a),unary($b),unary($c)|
 	io.print(O,"  ",O1),
