@@ -1,0 +1,16 @@
+main{
+	shortestio.e_input.
+}.
+rule{
+	e($a,$b,C),e($a1,$b1,$c1):-$a==$b1,$b==$a1,int($c1)|e($a,$b,C).
+}.
+out{
+	e(A,B,C)\:-dump.graphviz.
+}
+.
+main{$p,@q}/,rule{$p1,@q1}/:-
+uniq|main{$p,@q1},rule{$p1,@q1}.
+
+
+main{$p,@q}/,out{$p1,@q1}/:-
+uniq|main{$p,@q1},out{$p1,@q1}.
