@@ -27,13 +27,29 @@
 
 	dump.time(X):-io.print_line(io.stdout,str.from(X),io.free_port).	
 
-	e(A,B,C)\dump.graphviz:-
+ 	e(A,B,C)\dump.graphviz:-
 	io.print_line(io.stdout,"digraph sample{",O),
 	io.print_line(O,"  graph [size = \"10, 10\"];",O1),
 	graphvizdump(O1).
 	graphvizdump(O),e($a,$b,$c):-unary($a),unary($b),unary($c)|
 	io.print(O,"  ",O1),
 	io.print(O1,str.from($a),O2),
+	io.print(O2," -> ",O3),
+	io.print(O3,str.from($b),O4),
+	io.print(O4," [label = \"",O5),
+	io.print(O5,str.from($c),O6),
+	io.print_line(O6,"\", dir = none];",O7),
+	graphvizdump(O7).
+	graphvizdump(O):-io.print_line(O,"}",io.free_port).
+
+	cost(A,B,C,D)\dump.cost_tree_graphviz:-
+	io.print_line(io.stdout,"digraph sample{",O),
+	io.print_line(O,"  graph [size = \"10, 10\"];",O1),
+	costtreedump(O1).
+	cost($a,$b,$c,$d):-$a==$b,unary($c),unary($d)|.
+	costtreedump(O),cost($a,$b,$c,$d):-unary($a),unary($b),unary($c),unary($d)|
+	io.print(O,"  ",O1),
+	io.print(O1,str.from($d),O2),
 	io.print(O2," -> ",O3),
 	io.print(O3,str.from($b),O4),
 	io.print(O4," [label = \"",O5),
