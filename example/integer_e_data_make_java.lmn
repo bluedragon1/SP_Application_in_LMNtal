@@ -1,0 +1,41 @@
+main{
+	l=[].
+	io.use.
+	a=io.readline(field).
+	a(done),field(X):-b=io.readline(field(X)).
+}.
+rule{
+	field($a,$b):-string($a),string($b)|
+	field(string.int_of_str($a),string.int_of_str($b)),string.use,integer.use.	
+	field($a,B),l(T):-uniq,$a0=$a-1|field($a0,B),l=[$a|T].
+
+	field($a,$b),L=[$x|T]:-$a>0,$a0=$a-1,$b0=$b-1,int($x)|
+	field($a0,$b0),L=[$a,$x|T],e($a,$x,direct,integer.rnd(100)+1).
+
+	field(A,$b),L=[$x|T],L1=[$x1|T1]:-
+	$x\=$x1,$b0=$b-1,$b>0|
+	field(A,$b0),L=[$x|T],L1=[$x1|T1],
+	e($x,$x1,direct,integer.rnd(100)+1).
+
+	e($x,$x1,direct,$c):-int($x),int($x1),int($c)|
+	e($x,$x1,$c),e($x1,$x,$c).
+}.
+out{
+	io.stdout(STDOUT) :- class(STDOUT, "java.io.PrintWriter"),uniq |
+	io.stdout(STDOUT),edump(STDOUT).
+	e($a,$b,$c),edump(X):-
+	unary($a),unary($b),unary($c)|
+	io.print(X,$a,O),
+	io.print(O," ",O1),
+	io.print(O1,$b,O2),
+	io.print(O2," ",O3),
+	io.println(O3,$c,edump).
+	done(X),io.stdout(STDOUT):-class(STDOUT, "java.io.PrintWriter") |
+	 io.stdout(STDOUT),X=STDOUT.
+}.
+main{$p,@q}/,rule{$p1,@q1}/:-
+uniq|main{$p,@q1},rule{$p1,@q1},a.
+
+
+main{$p,@q}/,out{$p1,@q1}/,a:-
+uniq|main{$p,@q1},out{$p1,@q1}.
