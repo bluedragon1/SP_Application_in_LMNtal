@@ -47,14 +47,14 @@
 	io.print_line(O,"  graph [size = \"10, 10\"];",O1),
 	costtreedump(O1).
 	cost($a,$b,$c,$d):-$a==$b,unary($c),unary($d)|.
-	costtreedump(O),cost($a,$b,$c,$d):-unary($a),unary($b),unary($c),unary($d)|
+	costtreedump(O),cost($a,$b,$c,$d),e($a1,$b1,$c1):-unary($a),$b==$b1,unary($c),$d==$a1,unary($c1)|
 	io.print(O,"  ",O1),
 	io.print(O1,str.from($d),O2),
 	io.print(O2," -> ",O3),
 	io.print(O3,str.from($b),O4),
 	io.print(O4," [label = \"",O5),
-	io.print(O5,str.from($c),O6),
-	io.print_line(O6,"\", dir = none];",O7),
-	graphvizdump(O7).
-	graphvizdump(O):-io.print_line(O,"}",io.free_port).
+	io.print(O5,str.from($c1),O6),
+	io.print_line(O6,"\"];",O7),
+	costtreedump(O7).
+	costtreedump(O):-io.print_line(O,"}",io.free_port).
 }
