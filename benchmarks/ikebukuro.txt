@@ -1,5 +1,5 @@
-baba shinjuku 4
 ikebukuro nishi 5
+baba shinjuku 4
 shinjuku baba 4
 shinjuku nakano 9
 school waseda 25
