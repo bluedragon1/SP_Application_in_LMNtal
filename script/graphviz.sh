@@ -1,6 +1,8 @@
 #!/bin/sh
+a=${1##*/}
+b=${a%.*}
 cd ..
-./run.sh example/graphviz.lmn < benchmarks/integer/$1.txt > benchmarks/integer/$1.dot
+./run.sh example/graphviz.lmn < script/$1 > benchmarks/integer/${b}.dot
 cd script
-dot -Tpng ../benchmarks/integer/$1.dot -o $1.png
-display $1.png
+dot -Tpng ../benchmarks/integer/${b}.dot -o ${b}.png
+display ${b}.png

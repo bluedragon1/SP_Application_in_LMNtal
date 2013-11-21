@@ -1,5 +1,4 @@
 #!/bin/sh
-#$LMNTAL_HOME/installed/bin/slim --no-dump --use-builtin-rule io/shortestio.lmn io/dump.lmn makedata.lmn rule/basic_rule.lmn $*
 cd ..
 echo "$1 $2" > .emake
 ./run.sh example/integer_e_data_make.lmn < .emake > benchmarks/integer/$1_$2.txt

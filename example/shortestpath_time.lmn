@@ -11,7 +11,7 @@ rule{
 out{
 	//e(A,B,C)\:-dump.e.
 	//cost(A,B,C,D)\:-dump.cost.
-	start($x),goal($y):-$z=$y-$x|time($z).	
+	start($x),goal($y):-$z=$y-.$x|time($z).	
 	time(X):-dump.time(X).
 }
 .
