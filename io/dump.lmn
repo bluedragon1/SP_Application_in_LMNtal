@@ -13,6 +13,7 @@
 	edump(O):-io.free_port(O).
 
 	cost(A,B,C,D)\dump.cost:-costdump(io.stdout).
+	cost(A,B,C,D,E,F)\dump.cost:-costdump(io.stdout).
 	costdump(O),cost($a,$b,$c,$d):-
 	unary($a),unary($b),unary($c),unary($d)|
 	io.print(O,str.from($a),O1),
@@ -22,6 +23,16 @@
 	io.print(O22,str.from($c),O3),
 	io.print(O3," ",O33),
 	io.print_line(O33,str.from($d),O4),
+	costdump(O4).
+	costdump(O),cost($a,!B,$c,!D,$e,$f):-
+	unary($a),unary($c),unary($e),unary($f)|
+	io.print(O,str.from($a),O1),
+	io.print(O1," ",O11),
+	io.print(O11,str.from($c),O2),
+	io.print(O2," ",O22),
+	io.print(O22,str.from($e),O3),
+	io.print(O3," ",O33),
+	io.print_line(O33,str.from($f),O4),
 	costdump(O4).
 	costdump(O):-io.free_port(O).
 

@@ -27,10 +27,10 @@ cost($a):-unary($a)|.
 
 // 1 to $1, start node is $2 and hyperlink
 shortestio.make_string_hyper=[$a|H]:-unary($a),uniq|
-cost($a,!HY,$a,!HY,0,no),l=H,cost($a,!HY),ll=[].
-cost($a,!HY),l=[$b|H],ll(T):-unary($a),unary($b)|
-cost($a,!HY),cost($a,!HY,$b,!HYB,10000,null),l=H,ll=[[$a,!HYB]|T].
-cost(A,!HY),ll(T):-ll=[[A,!HY]|T].
+cost($a,!A,$a,!A,0,no),l=H,cost($a,!A),ll=[].
+cost($a,!A),l=[$b|H],ll(T):-unary($a),unary($b)|
+cost($a,!A),cost($a,!A,$b,!B,10000,null),l=H,ll=[[$b,!B]|T].
+cost(A,!H),ll(T):-ll=[[A,!H]|T].
 
 
 

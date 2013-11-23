@@ -3,9 +3,10 @@
 a=$1
 while [ $a -le $2 ]
 do
-    #echo -n ",${a}"
-    b=`expr ${a} + ${a}`
+    b=`expr ${a} \* 3`
+    if [ ! -e ../benchmarks/integer/${a}_${b}.txt ]; then
     ./makedata.sh $a $b
+    fi
     cd ..
     echo -n ","
     ./run.sh example/shortestpath_time.lmn < benchmarks/integer/${a}_${b}.txt
@@ -13,3 +14,4 @@ do
     a=`expr ${a} + $3`
 done
 echo " "
+
