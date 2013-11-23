@@ -1,0 +1,33 @@
+main{
+	shortestio.e_input_string.
+	l(L):-shortestio.make_string_hyper(L).
+}.
+
+rule{
+
+	//cost(A,B,C,D)\:-uniq|basic_rule.use.
+	hyper_rule.use.
+}.
+out{
+	start($x),goal($y):-$z=$y-.$x|time($z).	
+	time(X):-dump.time(X).
+	
+}
+.
+
+main{$p[],@q}/,make_cost_string{$p1[],@q1}/:-
+uniq|main{$p[],@q},make_cost_string{$p[],$p1[],@q1}.
+
+main{$p,@q}/,make_cost_string{$p1,@q1}/:-
+uniq|main{$p,$p1,@q},make_cost_string{@q1}.
+
+main{$p,@q}/,hyper_connect{$p1,@q1}/:-
+uniq|main{$p,@q1},hyper_connect{$p1,@q1}.
+
+
+main{$p,@q}/,rule{$p1,@q1}/:-
+uniq|main{start=time.gettime,$p,@q1},rule{$p1,@q1},.
+
+
+main{$p,@q}/,out{$p1,@q1}/:-
+uniq|main{goal=time.gettime,$p,@q1},out{$p1,@q1}.
