@@ -1,6 +1,5 @@
 main{
 	shortestio.e_input_string.
-	l(L):-shortestio.make_string_hyper(L).
 }.
 
 rule{
@@ -15,10 +14,10 @@ out{
 .
 
 main{$p[],@q}/,make_cost_string{$p1[],@q1}/:-
-uniq|main{$p[],@q},make_cost_string{$p[],$p1[],@q1}.
+uniq|main{$p[],$p1[],@q1},make_cost_string{@q}.
 
-main{$p,@q}/,make_cost_string{$p1,@q1}/:-
-uniq|main{$p,$p1,@q},make_cost_string{@q1}.
+main{$p,@q}/,make_cost_string2{$p1,@q1}/:-
+uniq|main{$p,@q1},make_cost_string2{$p1,@q}.
 
 main{$p,@q}/,hyper_connect{$p1,@q1}/:-
 uniq|main{$p,@q1},hyper_connect{$p1,@q1}.

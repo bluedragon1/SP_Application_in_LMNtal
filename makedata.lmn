@@ -16,8 +16,13 @@
 }.
 make_cost_string{
 l=[].
-l=[],e(X,Y,$x):-uniq,int($x)|l=[X,Y].
-L=[$l|H],e($a,Y,$x):-$l==$a,int($x)|L=[$l,Y|H].
+e($a,$b,$c):-uniq($a,$b,$c)|e($a,$b,$c),e_to_cost($a,$b,$c).
+l=[],e_to_cost(X,Y,$x):-uniq,int($x)|l=[X,Y].
+L=[$l|H],e_to_cost($a,Y,$x):-$l==$a,int($x)|L=[$l,Y|H].
 L=[$l|H],L1=[$l1|H1]:-$l==$l1|L=[$l|H],L1=H1.
 source($x),L=[$l|H],l=H1:-$x==$l|L=H,l=[$x|H1].
+}.
+
+make_cost_string2{
+	l(L):-shortestio.make_string_hyper(L).
 }.
