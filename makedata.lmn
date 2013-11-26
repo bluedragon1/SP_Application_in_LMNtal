@@ -24,5 +24,10 @@ source($x),L=[$l|H],l=H1:-$x==$l|L=H,l=[$x|H1].
 }.
 
 make_cost_string2{
+	l(L):-shortestio.make_string(L).
+}.
+
+
+make_cost_string2_hyper{
 	l(L):-shortestio.make_string_hyper(L).
 }.

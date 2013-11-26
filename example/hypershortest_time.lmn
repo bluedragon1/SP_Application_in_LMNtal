@@ -15,8 +15,8 @@ out{
 main{$p[],@q}/,make_cost_string{$p1[],@q1}/:-
 uniq|main{start=time.gettime,$p[],$p1[],@q1},make_cost_string{@q}.
 
-main{$p,@q}/,make_cost_string2{$p1,@q1}/:-
-uniq|main{goal=time.gettime,$p,@q1},make_cost_string2{$p1,@q}.
+main{$p,@q}/,make_cost_string2_hyper{$p1,@q1}/:-
+uniq|main{goal=time.gettime,$p,@q1},make_cost_string2_hyper{$p1,@q}.
 
 main{$p,@q}/,hyper_connect{$p1,@q1}/:-
 uniq|main{$p,@q1},hyper_connect{$p1,@q1}.

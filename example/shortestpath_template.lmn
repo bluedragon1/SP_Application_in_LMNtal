@@ -1,6 +1,5 @@
 main{
 	shortestio.e_input_string.
-	l(L):-shortestio.make_string(L)
 }.
 
 rule{
@@ -13,12 +12,11 @@ out{
 	cost(A,B,C,D)\:-dump.cost.
 }
 .
-main{$p[],@q}/,make_cost_string{$p1[],@q1}/:-
-uniq|main{$p[],@q},make_cost_string{$p[],$p1[],@q1}.
-
 main{$p,@q}/,make_cost_string{$p1,@q1}/:-
-uniq|main{$p,$p1,@q},make_cost_string{@q1}.
+uniq|main{$p,$p1,@q1},make_cost_string{@q}.
 
+main{$p,@q}/,make_cost_string2{$p1,@q1}/:-
+uniq|main{$p,@q1},make_cost_string2{$p1,@q}.
 
 main{$p,@q}/,rule{$p1,@q1}/:-
 uniq|main{$p,@q1},rule{$p1,@q1}.
