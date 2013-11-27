@@ -82,4 +82,32 @@ shortestio.e_input_string:-
 io.read_token(io.stdin,I,S),
 shortestio_string(S,I).
 
+
+//string integer(O2)
+shortestio_string(integer.of_str(eof),I):-io.free_port(I).
+
+shortestio_string_int($x,I):-int($x),uniq|
+io.read_token(I,I1,S1),
+io.read_token(I1,I2,S2),
+io.read_token(I2,I3,S3),
+e(str.from($x),S1,integer.of_str(S2)),
+shortestio_string_int(integer.of_str(S3),I3),
+source(str.from($x)),maxint($x).
+
+maxint($x),shortestio_string_int($y,I):-
+$x<$y,uniq($y)|maxint($y),shortestio_string_int($y,I).
+
+shortestio_string_int($x,I):-int($x)|
+io.read_token(I,I1,S1),
+io.read_token(I1,I2,S2),
+io.read_token(I2,I3,S3),
+e(str.from($x),S1,integer.of_str(S2)),
+shortestio_string_int(integer.of_str(S3),I3).
+
+
+shortestio.e_input_string_int:-
+io.read_token(io.stdin,I,S),
+shortestio_string_int(integer.of_str(S),I).
+
+
 }.

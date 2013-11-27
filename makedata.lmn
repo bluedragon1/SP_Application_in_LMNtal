@@ -44,6 +44,11 @@ L=[$l|H],L1=[$l1|H1]:-$l==$l1|L=[$l|H],L1=H1.
 md5 @@
 source($x),L=[$l|H],l=H1:-$x==$l|L=H,l=[$x|H1].
 }.
+make_cost_string_O2{
+	l=[].
+	maxint($x),l(H):-$x>0,$x1=$x-1|maxint($x1),l=[str.from($x)|H].
+	source($x),L=[$l|H],l=H1:-$x==$l|L=H,l=[$x|H1].
+}.
 make_cost_string2{
 	md22 @@
 	l(L):-shortestio.make_string(L).
