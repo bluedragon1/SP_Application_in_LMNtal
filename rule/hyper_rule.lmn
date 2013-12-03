@@ -1,11 +1,11 @@
 {
 	module(hyper_rule).
 	hyperrulemain @@
-	e($x,!A,Y,!B,$c0), cost(X1,!Z,Y1,!A,$c1,X), cost(X2,!Z,Y2,!B,$c2,$a) :-
+	cost(X1,!Z,Y1,!A,$c1,X),e($x,!A,Y,!B,$c0),  cost(X2,!Z,Y2,!B,$c2,$a) :-
 	$c=$c0+$c1, $c<$c2 ,unary($a),unary($x)|e($x,!A,Y,!B,$c0), cost(X1,!Z,Y1,!A,$c1,X), cost(X2,!Z,Y2,!B,$c,$x).
 }.
 
 hyper_connect{
-	e($x,Y,Z),H=[$a,!A]:-$x==$a|e($x,!A,Y,Z),H=[$a,!A].
-	e(X,!A,$y,Z),H=[$a,!HY]:-$y==$a|e(X,!A,$y,!HY,Z),H=[$a,!HY].
-}
+	e3e4 @@ e($x,Y,Z),H=nh($a,!A):-$x==$a|e($x,!A,Y,Z),H=nh($a,!A).
+	e4e5 @@ e(X,!A,$y,Z),H=nh($a,!HY):-$y==$a|e(X,!A,$y,!HY,Z),H=nh($a,!HY).
+}.

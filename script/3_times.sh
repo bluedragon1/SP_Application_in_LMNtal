@@ -13,4 +13,4 @@ do
   ./loop.sh $1 $2 $3
   a=`expr ${a} + 1`
 done
-ssh gouda ./mail.sh
+#ssh gouda ./mail.sh

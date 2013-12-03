@@ -1,2 +1,10 @@
 how to use
+
+//通常実行//
 ./run.sh (/*file name*/)
+
+//最終のグラフの状態を出力//
+./dump_run.sh 
+
+//プロファイラモード//
+./profile_run.sh

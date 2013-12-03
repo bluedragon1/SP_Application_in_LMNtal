@@ -9,7 +9,7 @@ do
     fi
     cd ..
     echo -n ","
-    ./run.sh example/hypershortest_time.lmn < benchmarks/integer/${a}_${b}.txt
+    ./ilrun.sh example/hypershortest_timeO2.lmn < benchmarks/integer/${a}_${b}.txt
     cd script
     a=`expr ${a} + $3`
 done

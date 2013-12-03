@@ -36,9 +36,9 @@ shortestio.make_string_hyper=[$a|H]:-unary($a),uniq|
 cost($a,!A,$a,!A,0,no),l=H,cost($a,!A),ll=[].
 iomshl2 @@
 cost($a,!A),l=[$b|H],ll(T):-unary($a),unary($b)|
-cost($a,!A),cost($a,!A,$b,!B,1000000000,null),l=H,ll=[[$b,!B]|T].
+cost($a,!A),cost($a,!A,$b,!B,1000000000,null),l=H,ll=[nh($b,!B)|T].
 iomshl3 @@
-cost(A,!H),ll(T):-ll=[[A,!H]|T].
+cost(A,!H),ll(T):-ll=[nh(A,!H)|T].
 
 
 
