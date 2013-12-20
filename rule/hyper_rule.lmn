@@ -9,3 +9,14 @@ hyper_connect{
 	e3e4 @@ e($x,Y,Z),H=nh($a,!A):-$x==$a|e($x,!A,Y,Z),H=nh($a,!A).
 	e4e5 @@ e(X,!A,$y,Z),H=nh($a,!HY):-$y==$a|e(X,!A,$y,!HY,Z),H=nh($a,!HY).
 }.
+
+hyper_connect_using_array{
+	e3e4arr @@ e($x,Y,Z), array(AR):-string($x)|e($x,X,Y,Z), array=array.get(AR,integer.of_str($x),X).
+	e4e5arr @@ e(X,A,$y,Z),array(AR):-string($y)|e(X,A,$y,Y,Z),array=array.get(AR,integer.of_str($y),Y).
+}.
+//old
+/*
+hyper_connect_using_array{
+	e3e4arr @@ e($x,Y,Z), array(AR):-string($x)|e($x,X,Y,Z), array=array.get(AR,integer.of_str($x)-1,X).
+	e4e5arr @@ e(X,A,$y,Z),array(AR):-string($y)|e(X,A,$y,Y,Z),array=array.get(AR,integer.of_str($y)-1,Y).
+}.*/

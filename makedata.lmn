@@ -46,6 +46,7 @@ source($x),L=[$l|H],l=H1:-$x==$l|L=H,l=[$x|H1].
 }.
 make_cost_string_O2{
 	l=[].
+	maxint($x):-uniq,int($x)|maxint($x),array_max($x).
 	maxint($x),l(H):-$x>0,$x1=$x-1|maxint($x1),l=[str.from($x)|H].
 	source($x),L=[$l|H],l=H1:-$x==$l|L=H,l=[$x|H1].
 }.
@@ -59,3 +60,31 @@ make_cost_string2_hyper{
 	md22h @@
 	l(L):-shortestio.make_string_hyper(L).
 }.
+
+make_cost_string_hyper_using_array{
+	arr_init @@
+	array_max($x):-$x1=$x+1|array=array.new($x1,!H).
+	arr_fir @@
+	l=[$a|H],array(X):-uniq,string($a)|
+	cost($a,!A,$a,!A,0,no),cost($a,!A),array=array.put(X,integer.of_str($a),!A),l=H.
+	arr1 @@
+	cost($a,!A),l=[$b|H],array(X):-string($a),string($b)|
+	cost($a,!A),cost($a,!A,$b,!B,1000000000,null),
+	l=H,array=array.put(X,integer.of_str($b),!B).
+	arr_fin @@
+	cost($a,!A):-unary($a)|.
+}.
+//old
+/*make_cost_string_hyper_using_array{
+	arr_init @@
+	array_max(X):-int(X)|array=array.new(X,!H).
+	arr_fir @@
+	l=[$a|H],array(X):-uniq,string($a)|
+	cost($a,!A,$a,!A,0,no),cost($a,!A),array=array.put(X,integer.of_str($a)-1,!A),l=H.
+	arr1 @@
+	cost($a,!A),l=[$b|H],array(X):-string($a),string($b)|
+	cost($a,!A),cost($a,!A,$b,!B,1000000000,null),
+	l=H,array=array.put(X,integer.of_str($b)-1,!B).
+	arr_fin @@
+	cost($a,!A):-unary($a)|.
+}.*/
