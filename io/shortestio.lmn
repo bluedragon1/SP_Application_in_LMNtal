@@ -84,7 +84,7 @@ shortestio_string(S,I).
 
 
 //string integer(O2)
-shortestio_string(integer.of_str(eof),I):-io.free_port(I).
+shortestio_string_int(integer.of_str(eof),I):-io.free_port(I).
 
 shortestio_string_int($x,I):-int($x),uniq|
 io.read_token(I,I1,S1),
